@@ -31,6 +31,14 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+transporter.verify(function (error, success) {
+  if (error) {
+    console.log("Transport Error:", error);
+  } else {
+    console.log("Mail Server Ready");
+  }
+});
+
 // Send Mail API
 app.post("/send", async (req, res) => {
   try {
